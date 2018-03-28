@@ -1,6 +1,5 @@
 package les4charlots.newdes;
 
-
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +17,7 @@ import java.util.HashMap;
  * Created by quentin on 18/02/2018.
  */
 
+// Classe gestionnaire de la liste des news.
 class ListNewsAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<HashMap<String, String>> data;
@@ -26,16 +26,21 @@ class ListNewsAdapter extends BaseAdapter {
         activity = a;
         data=d;
     }
+    //retourne nombre de news
     public int getCount() {
         return data.size();
     }
+    //retourne la position d'une news
     public Object getItem(int position) {
         return position;
     }
+    //retourne l'id d'une news
     public long getItemId(int position) {
         return position;
     }
+    //retourne une vue de la news
     public View getView(int position, View convertView, ViewGroup parent) {
+        // Holder servant à afficher les données récupérées depuis le flux JSON.
         ListNewsViewHolder holder = null;
         if (convertView == null) {
             holder = new ListNewsViewHolder();
@@ -56,6 +61,7 @@ class ListNewsAdapter extends BaseAdapter {
         holder.sdetails.setId(position);
         holder.time.setId(position);
 
+        // Variable contenant les données du flux JSON.
         HashMap<String, String> song = new HashMap<String, String>();
         song = data.get(position);
 
@@ -69,8 +75,12 @@ class ListNewsAdapter extends BaseAdapter {
             {
                 holder.galleryImage.setVisibility(View.GONE);
             }else{
+                //utilisation de picasso pour la gestion des images en cache
+                //load - charge l'image recherchée
+                //placeholder - charge une image par défaut lorsque la news n'en possède pas
                 Picasso.with(activity)
                         .load(song.get(MainActivity.KEY_URLTOIMAGE).toString())
+                        .placeholder(android.R.drawable.ic_menu_agenda)
                         .resize(300, 200)
                         .into(holder.galleryImage);
             }

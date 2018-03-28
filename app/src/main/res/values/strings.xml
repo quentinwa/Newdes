@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">New\'des</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="action_settings">A propos</string>
+    <string name="action_refresh">Rafraîchir</string>
+    <string name="developed_by">Application réalisé par :
+      \n -Wadoux Quentin
+      \n -Hudelle Julien
+      \n -Chretien Simon
+      \n -Gournay Lucas</string>
+    <string name="no_network">Pas de connexion internet</string>
+    <string name="error_occured">Une erreur est survenu lors du traitement</string>
+    <string name="no_news">Aucune news n'a été trouvée</string>
 </resources>

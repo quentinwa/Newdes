@@ -23,15 +23,18 @@ public class DetailsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
+        //Création d'un loader
         loader = (ProgressBar) findViewById(R.id.loader);
+        //Création de la webview
         webView = (WebView) findViewById(R.id.webView);
         webView.getSettings().setBuiltInZoomControls(true);
         webView.getSettings().setDisplayZoomControls(false);
         webView.loadUrl(url);
 
-
+        //Gestion du loader
         webView.setWebChromeClient(new WebChromeClient() {
             public void onProgressChanged(WebView view, int progress) {
+                //Si chargé, enlever le loader sinon le laisser
                 if (progress == 100) {
                     loader.setVisibility(View.GONE);
                 } else {
